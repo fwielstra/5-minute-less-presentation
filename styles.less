@@ -1,0 +1,745 @@
+
+
+
+
+
+/////////////////////////////////////////
+//																		 //
+//              LESS CSS							 //
+//				 														 //
+//  				 clever pun here					 //
+//																		 //
+//																		 //
+//					http://lesscss.org/				 //
+//																		 //
+/////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+// how to use: uncomment bits, keep those marked 'keep',
+// recomment those marked 'discard'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* normal CSS. tl;dr */
+
+/* keep
+body {
+	zoom: 110%;
+}
+
+.hero-unit {
+	padding: 60px;
+	margin-bottom: 30px;
+	border: 3px solid;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 2.46 second LESS installation:
+
+/*
+<link rel="stylesheet/less" type="text/css" href="styles.less">
+<script src="less.js" type="text/javascript"></script>
+
+Live reloading:
+
+<script>
+  less.watch();
+</script>
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FEATURES
+// woo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// VARIABLES
+
+/*
+@heroUnitBackground: #cccccc;
+
+.hero-unit {
+	background-color: @heroUnitBackground;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// variables have scope, too:
+
+@var: red;
+
+#page {
+	@var: white;
+	#header {
+	color: @var; // white
+	}
+}
+
+#footer {
+	color: @var; // red
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// MIXINS
+
+
+/* discard
+.rounded-corners {
+	border-radius: 30px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+}
+
+.hero-unit {
+	.rounded-corners
+}
+
+.some-box {
+  .rounded-corners
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// PARAMETRIC MIXINS (with defaults)
+
+/* keep
+.rounded-corners (@radius: 30px) {
+	border-radius: @radius;
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+}
+
+.hero-unit {
+	.rounded-corners();
+	//.rounded-corners(50px);
+}
+
+.some-box {
+  .rounded-corners(9001px);
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Pass all parameters: @arguments
+
+/* keep
+.box-shadow (@x: 0, @y: 0, @blur: 1px, @color: #000) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+
+.hero-unit {
+	.box-shadow(5px, 5px);
+	//.box-shadow(5px, 5px, 3px);
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// NESTED RULES
+
+
+/* CSS: */
+.hero-unit h1 { /* blah */ }
+.hero-unit p  { /* moar blah */ }
+
+/* LESS */
+
+/* keep
+.hero-unit {
+	h1 {
+	  margin-bottom: 0;
+	  font-size: 60px;
+	  line-height: 1;
+	}
+	
+	p {
+	  font-size: 18px;
+	  font-weight: 200;
+	  line-height: 44px;
+	}
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FUNCTIONS & OPERATORS
+
+/* keep
+.hero-unit {
+
+  @baseLineHeight: 27px;
+
+  p { line-height: @baseLineHeight * 1.5; }
+
+  // h1 { color: fadeout(#000000, 50%); }
+
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// PATTERN MATCHING
+
+/* discard
+.patternmatch (dark, @color) {
+  color: darken(@color, 30%);
+}
+
+.patternmatch (light, @color) {
+  color: lighten(@color, 30%);
+}
+
+.patternmatch (@_, @color) {
+  display: block;
+}
+
+.hero-unit {
+
+  @switch: light;
+
+  p {	.patternmatch(@switch, #0000ff); }
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// GUARDS
+
+/* w/e
+.guard (@a) when (lightness(@a) >= 50%) {
+  background-color: black;
+}
+
+.guard (@a) when (lightness(@a) < 50%) {
+  background-color: white;
+}
+
+.guard (@a) {
+  color: @a;
+}
+
+.hero-unit p { .guard(#ddd) }
+//.hero-unit p { .guard(#555) }
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////
+//										                 //
+//          BUT WAIT THERE'S MORE      //
+//										                 //
+/////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Math functions:
+
+@round: round(1.67); // returns `2`
+
+@ceil:  ceil(2.4);   // returns `3`
+
+@floor: floor(2.6);  // returns `2`
+
+@percentage: percentage(0.5); // 50%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Namespaces
+
+#bundle {
+  .button () {
+		border: 1px solid black;
+		background-color: grey;
+		&:hover { background-color: white }
+  }
+
+  .tab { /* stuff */ }
+  .citation { /* stuff */ }
+}
+
+// usage:
+
+#header a {
+  color: orange;
+  #bundle > .button;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// String interpolation
+
+@base-url: "http://assets.fnord.com";
+
+.someClass {
+  background-image: url("@{base-url}/images/bg.png");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// (Finally), Javascript interpretation
+
+@var: `"hello".toUpperCase() + '!'`;
+
+@height: `document.body.clientHeight`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Whitespace!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////
+//																			//
+//                THE END								//
+//																			//
+//          http://lesscss.org/					//
+//																			//
+//////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
